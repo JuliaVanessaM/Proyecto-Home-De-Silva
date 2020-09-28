@@ -1,0 +1,45 @@
+PROCESSOR 16F887
+ ;MENDEZ OSORIO JULIA VANESSA
+ ;17080238
+ ;7A
+ ;imct17.jmendezo@itesco.edu.mx
+ ;MICROCONTROLADORES
+ ;JORGE ALBERTO SILVA VALENZUELA
+                                   #include <xc.inc>
+;CONFIG ADDRESS=2007
+CONFIG FOSC = INTRC_NOCLKOUT
+CONFIG WDTE = OFF
+CONFIG PWRTE = ON
+CONFIG MCLRE = OFF
+CONFIG CP = OFF
+CONFIG CPD = OFF
+CONFIG BOREN = OFF
+CONFIG IESO = OFF
+CONFIG FCMEN = ON
+ CONFIG DEBUG = ON
+;CONFIG ADDRESS=2008
+CONFIG BOR4V=BOR40V
+CONFIG WRT = OFF
+PSECT udata
+ ;Declaración de variables a utilizar 
+JULIA:
+	DS 1
+ cont:
+	DS 1
+var3:
+	DS 1
+
+PSECT resetVec,class=CODE,delta=2
+resetVec:
+PAGESEL MENDEZ
+goto MENDEZ
+PSECT code
+ ;Ejecución del funcionamiento(MENDEZ)
+MENDEZ:
+bcf 0x03,6
+bcf 0x03,5
+movlw 0b10010010
+ANDLW 0b01111111
+movwf JULIA
+goto MENDEZ
+END
